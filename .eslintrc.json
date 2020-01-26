@@ -1,0 +1,7 @@
+{
+  "extends": "eslint-config-synacor",
+  "rules": {
+    "semi": "error",
+    "indent": ["error", 2]
+  }
+}

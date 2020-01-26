@@ -17,23 +17,23 @@ export default class App extends Component {
 	 *	@param {string} event.url	The newly routed URL
 	 */
 	handleRoute = e => {
-		this.currentUrl = e.url;
+	  this.currentUrl = e.url;
 	};
 
 	render(props) {
-		return (
-			<Provider value={props}>
-				<div id="app">
-					<Header />
-					<Router onChange={this.handleRoute}>
-						<Home path="/" />
-						<Blogs path="/blogs/" />
-						<Blog path="/blog/:name" />
-						<Contact path="/contact/" />
-						<ContactSuccess path="/contact/success" />
-					</Router>
-				</div>
-			</Provider>
-		);
+	  return (
+	    <Provider value={props}>
+	      <div id="app">
+	        <Header />
+	        <Router onChange={this.handleRoute}>
+	          <Home path="/" />
+	          <Blogs path="/blogs/" />
+	          <Blog path="/blog/:name" />
+	          <Contact path="/contact/" />
+	          <ContactSuccess path="/contact/success" />
+	        </Router>
+	      </div>
+	    </Provider>
+	  );
 	}
 }
