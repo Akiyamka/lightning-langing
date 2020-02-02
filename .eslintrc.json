@@ -2,6 +2,6 @@
   "extends": "eslint-config-synacor",
   "rules": {
     "semi": "error",
-    "indent": ["error", 2]
+    "indent": ["error", 2, { "SwitchCase": 1 }]
   }
 }

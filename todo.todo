@@ -1,0 +1,5 @@
+✘ pages.js - '/content/blog/*' transform to full path with support regulars expression @cancelled (2020-2-2 2:30:08 PM)
+✔ utils/generatePages.js - 'blog/:name' generate id-s based on filenames in folder, create links, add fills it with data; @done (2020-2-2 3:38:11 PM)
+✔ utils/generatePages.js - read data from content folders and inject as data; @done (2020-2-3 12:17:59 AM)
+
+☐ more transparent connection pages.js with react router
