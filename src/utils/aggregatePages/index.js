@@ -13,7 +13,8 @@ function aggregatePages(config) {
     }
   
     const { folder, fields } = config;
-    const records = readFilesInDirectory(folder).map(createExtractor(fields));
+    const extractor = createExtractor(fields);
+    const records = readFilesInDirectory(folder).map(extractor);
     return records;
   }
   catch (e) {

@@ -27,16 +27,16 @@ function getBlogsListing(data, isLoading) {
   if (data && data.data) {
     const { data: blogs } = data;
     return (
-      <>{blogs.edges.map(blog => (
-        <Link href={`/blog/${blog.id}`}>
+      <>{blogs.map(({ metadata, content }) => (
+        <Link href={`/blog/${metadata.id}`}>
           <article>
-            <h2>{blog.details.title}</h2>
+            <h2>{metadata.title}</h2>
             <div>
-              {(blog.details.tags.split(',') || []).map(tag => (
+              {(metadata.tags.split(',') || []).map(tag => (
                 <span class={style.tag}>{tag}</span>
               ))}
             </div>
-            <p class={style.preview}>{blog.preview}</p>
+            <p class={style.preview}>{content}</p>
           </article>
         </Link>
       ))}</>

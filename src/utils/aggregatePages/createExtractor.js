@@ -8,14 +8,17 @@ function applyTransformations(transforms, data) {
     .replace(/(\r)?\n/,''); // ??
   
   if (max !== undefined) {
-    transformedData.lenght > max
+    transformedData = transformedData.length > max
       ? transformedData.substr(0, max) + '...'
       : transformedData;
   }
+
   return transformedData;
 }
 
 function createExtractor(fields) {
+  const fieldsForExtraction = Array.isArray(fields) ? fields : [fields];
+
   return fileInterface => {
     fileInterface.read();
 
@@ -24,8 +27,9 @@ function createExtractor(fields) {
       return fileInterface.data;
     }
 
-    const fieldsForExtraction = Array.isArray(fields) ? fields : [fields];
     return fieldsForExtraction.reduce((acc, field) => {
+      // console.log(JSON.stringify(acc))
+
       if (typeof field === 'string') {
         acc[field] = fileInterface.data[field];
       }
@@ -38,8 +42,8 @@ function createExtractor(fields) {
             'For describe field use string or object with one parameter.',
             'Example: { [filedName]: [configObject] }');
         }
-        field = Object.keys(field)[0];
-        acc[field] = applyTransformations(field, fileInterface.data[field]);
+        const fieldName = Object.keys(field)[0];
+        acc[fieldName] = applyTransformations(field[fieldName], fileInterface.data[fieldName]);
       }
       return acc;
     }, {});

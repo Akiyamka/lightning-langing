@@ -15,11 +15,7 @@ module.exports = generatePages([
     data: aggregatePages({
       folder: './content/blog/',
       fields: [
-        'title',
-        'date',
-        'subtitle',
-        'cover',
-        'tags',
+        'metadata',
         { content: { max: 500 } }
       ]
     })
