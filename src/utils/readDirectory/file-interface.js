@@ -7,7 +7,7 @@ class FileInterface {
     this.path = path;
   }
 
-  static getExtention(fileName) {
+  static getExtension(fileName) {
     return fileName.substr(fileName.lastIndexOf('.') + 1).toLowerCase();
   }
 
@@ -15,8 +15,8 @@ class FileInterface {
     return path.substr(path.lastIndexOf(sep) + 1);
   }
 
-  static getParser(extention) {
-    switch (extention) {
+  static getParser(extension) {
+    switch (extension) {
       case 'md':
       case 'markdown': {
         return parseMD;
@@ -27,7 +27,7 @@ class FileInterface {
       }
 
       default: {
-        console.error('File format not recognised:', extention);
+        console.error('File format not recognized:', extension);
       }
     }
   }
@@ -36,18 +36,19 @@ class FileInterface {
     return this.constructor.getFilename(this.path);
   }
 
-  get extention() {
-    return this.constructor.getExtention(this.fileName);
+  get extension() {
+    return this.constructor.getExtension(this.fileName);
   }
 
   get id() {
-    return this.fileName;
+    return this.fileName.substr(0, this.fileName.lastIndexOf('.'));
   }
 
   read() {
     const string = readFileSync(this.path, 'utf-8');
-    const parser = this.constructor.getParser(this.extention);
+    const parser = this.constructor.getParser(this.extension);
     this.data = parser(string);
+    this.data.id = this.id;
     return this.data;
   }
 }

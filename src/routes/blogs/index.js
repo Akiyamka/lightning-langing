@@ -27,8 +27,8 @@ function getBlogsListing(data, isLoading) {
   if (data && data.data) {
     const { data: blogs } = data;
     return (
-      <>{blogs.map(({ metadata, content }) => (
-        <Link href={`/blog/${metadata.id}`}>
+      <>{blogs.map(({ id, metadata, content }) => (
+        <Link href={`/blog/${id}`}>
           <article>
             <h2>{metadata.title}</h2>
             <div>

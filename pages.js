@@ -15,6 +15,7 @@ module.exports = generatePages([
     data: aggregatePages({
       folder: './content/blog/',
       fields: [
+        'id',
         'metadata',
         { content: { max: 500 } }
       ]
